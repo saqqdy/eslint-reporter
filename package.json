@@ -1,0 +1,43 @@
+{
+	"name": "eslint-report",
+	"version": "1.0.0",
+	"description": "HTML Report for ESLint",
+	"main": "index.js",
+	"engine": "node >= 0.12.0",
+	"scripts": {
+		"start": "react-scripts start"
+	},
+	"bin": {
+		"eslint-report": "./bin/eslint-report.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/saqqdy/eslint-report"
+	},
+	"dependencies": {
+		"handlebars": "^4.3.1"
+	},
+	"devDependencies": {
+		"babel-eslint": "^10.1.0",
+		"chai": "4.2.0",
+		"colors": "^1.4.0",
+		"commander": "^5.0.0",
+		"coveralls": "3.0.3",
+		"eslint": "^6.8.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"istanbul": "0.4.5",
+		"prettier": "^2.0.2",
+		"shelljs": "^0.8.3"
+	},
+	"keywords": [
+		"eslint",
+		"report",
+		"html"
+	],
+	"author": "saqqdy.com",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/saqqdy/eslint-report/issues"
+	},
+	"homepage": "https://github.com/saqqdy/eslint-report#readme"
+}
