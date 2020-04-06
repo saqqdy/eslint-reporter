@@ -1,13 +1,13 @@
-# eslint-report
+# eslint-reporter
 支持按模块生成eslint报告
 
 ## 安装
 ```
 # 通过npm安装
-npm install -g eslint-report
+npm install -g eslint-reporter
 
 # 或者通过yarn安装
-yarn global add eslint-report
+yarn global add eslint-reporter
 ```
 
 ## 使用
@@ -25,12 +25,12 @@ gitm --help
 #### 导出指定目录的eslint报告
 ```
 # 导出./src/views/basic目录的检测报告到report.html
-eslint-report ./src/views/basic -o report.html
+eslint-reporter ./src/views/basic -o report.html
 ```
 
 
 #### 同时导出多个目录
 ```
 # 导出./src/views/basic和./src/libs两个目录的检测报告到report.html
-eslint-report ./src/views/basic ./src/libs
+eslint-reporter ./src/views/basic ./src/libs
 ```

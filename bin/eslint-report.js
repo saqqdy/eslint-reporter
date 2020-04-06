@@ -5,9 +5,9 @@ const sh = require('shelljs')
 const { error, queue } = require('./utils')
 const path = require('path')
 
-program.version('v' + set.version + ', powered by saqqdy', '-v, --version', '查看eslint-report版本')
+program.version('v' + set.version + ', powered by saqqdy', '-v, --version', '查看eslint-reporter版本')
 program
-	.name('eslint-report')
+	.name('eslint-reporter')
 	.usage('[config...]')
 	.arguments('[config...]')
 	.description('导出eslint报告')
@@ -39,7 +39,7 @@ program
 					list.push(el.path)
 				})
 				cmd.push({
-					// cmd: `${eslint} ${list.join(' ')} --ext ${opt.ext} -f /Users/saqqdy/www/saqqdy/eslint-report/src/js/reporter.js -o ${key}.html`,
+					// cmd: `${eslint} ${list.join(' ')} --ext ${opt.ext} -f /Users/saqqdy/www/saqqdy/eslint-reporter/src/js/reporter.js -o ${key}.html`,
 					cmd: `${eslint} ${list.join(' ')} --ext ${opt.ext} -f html -o ${key}.html`,
 					config: {
 						slient: true,

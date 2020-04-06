@@ -1,5 +1,5 @@
 {
-	"name": "eslint-report",
+	"name": "eslint-reporter",
 	"version": "1.0.0",
 	"description": "HTML Report for ESLint",
 	"main": "index.js",
@@ -8,11 +8,11 @@
 		"start": "react-scripts start"
 	},
 	"bin": {
-		"eslint-report": "./bin/eslint-report.js"
+		"eslint-reporter": "./bin/eslint-reporter.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/saqqdy/eslint-report"
+		"url": "https://github.com/saqqdy/eslint-reporter"
 	},
 	"dependencies": {
 		"handlebars": "^4.3.1"
@@ -37,7 +37,7 @@
 	"author": "saqqdy.com",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/saqqdy/eslint-report/issues"
+		"url": "https://github.com/saqqdy/eslint-reporter/issues"
 	},
-	"homepage": "https://github.com/saqqdy/eslint-report#readme"
+	"homepage": "https://github.com/saqqdy/eslint-reporter#readme"
 }
