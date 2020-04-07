@@ -44,6 +44,7 @@ const queue = list => {
 			let config = {
 					silent: true,
 					kill: true,
+					async: false,
 					again: false // 指令执行中断之后是否需要重新执行，类似冲突解决之后的指令，不再需要重复执行
 				},
 				cmd = command
@@ -63,20 +64,8 @@ const queue = list => {
 						out = out.replace(/\n*$/g, '')
 					}
 					returns.push({ code, out, err, config, cmd })
-					if (code !== 0 && config.kill) {
-						cb(true) // 回调并中断执行
-						// 只有silent模式才需要输出信息
-						config.silent && sh.echo(error(err))
-						sh.echo(error('指令 ' + cmd + ' 执行失败，中断了进程'))
-						sh.exit(1)
-					} else {
-						if (code === 0) {
-							sh.echo(success(config.success || '指令 ' + cmd + ' 执行成功'))
-						} else {
-							sh.echo(warning(config.fail || '指令 ' + cmd + ' 执行失败'))
-						}
-						cb() // 回调，继续执行吓一条
-					}
+					cb()
+					sh.echo(success(config.success || '执行成功'))
 				})
 			}
 		})

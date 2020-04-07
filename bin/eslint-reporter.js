@@ -13,6 +13,7 @@ program
 	.description('导出eslint报告')
 	.option('-o, --output [output]', '导出文件名称', 'report.html')
 	.option('-e, --ext [ext]', '需要校验的文件类型', '.vue,.js')
+	.option('-q, --quiet [quiet]', '只显示问题记录', false)
 	.action((config, opt) => {
 		let cmd = [],
 			eslint = ''
@@ -40,9 +41,9 @@ program
 				})
 				cmd.push({
 					// cmd: `${eslint} ${list.join(' ')} --ext ${opt.ext} -f /Users/saqqdy/www/saqqdy/eslint-reporter/src/js/reporter.js -o ${key}.html`,
-					cmd: `${eslint} ${list.join(' ')} --ext ${opt.ext} -f html -o ${key}.html`,
+					cmd: `${eslint} ${list.join(' ')} ${opt.quiet ? '--quiet' : ''} --ext ${opt.ext} -f html -o report/${key}.html`,
 					config: {
-						slient: true,
+						slient: false,
 						again: false,
 						success: '导出成功',
 						fail: '出错了，可能是文件过多'
@@ -53,9 +54,9 @@ program
 			cfg.forEach(el => {})
 		} else {
 			cmd.push({
-				cmd: `${eslint} ${config.join(' ')} --ext ${opt.ext} -f html -o ${opt.output}`,
+				cmd: `${eslint} ${config.join(' ')} ${opt.quiet ? '--quiet' : ''} --ext ${opt.ext} -f html -o report/${opt.output}`,
 				config: {
-					slient: true,
+					slient: false,
 					again: false,
 					success: '导出成功',
 					fail: '出错了，可能是文件过多'

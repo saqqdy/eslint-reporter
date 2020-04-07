@@ -1,6 +1,6 @@
 {
 	"name": "eslint-reporter",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "HTML Report for ESLint",
 	"main": "./bin/eslint-reporter.js",
 	"engine": "node >= 0.12.0",
