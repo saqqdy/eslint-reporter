@@ -13,10 +13,10 @@ yarn global add eslint-reporter
 ## 使用
 ```
 # 查看版本
-gitm -v
+eslint-reporter -v
 
 # 查看帮助信息
-gitm --help
+eslint-reporter --help
 ```
 
 ## 配置
