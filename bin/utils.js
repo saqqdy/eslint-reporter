@@ -65,7 +65,7 @@ const queue = list => {
 					}
 					returns.push({ code, out, err, config, cmd })
 					cb()
-					sh.echo(success(config.success || '执行成功'))
+					sh.echo('\r' + success(config.success || '执行成功'))
 				})
 			}
 		})
