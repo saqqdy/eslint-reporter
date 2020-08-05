@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const set = require('./../package.json')
+const path = require('path')
+const ora = require('ora')
 const program = require('commander')
 const sh = require('shelljs')
-const { error, queue } = require('./utils')
-const path = require('path')
+const { error, queue, success } = require('./utils')
 
 program.version('v' + set.version + ', powered by saqqdy', '-v, --version', '查看eslint-reporter版本')
 program
@@ -13,9 +14,10 @@ program
 	.description('导出eslint报告')
 	.option('-o, --output [output]', '导出文件名称', '')
 	.option('-e, --ext [ext]', '需要校验的文件类型', '.vue,.js')
-	.option('-f, --format [format]', '导出的类型', '')
+	.option('-f, --format [format]', '导出的类型，默认：stylish', '')
 	.option('-q, --quiet [quiet]', '只显示问题记录', false)
 	.option('--fix [fix]', '修复可自动修复的问题', false)
+	.option('-a, --admin [admin]', '负责人名称', '')
 	.action((config, opt) => {
 		let cmd = [],
 			eslint = '',
@@ -33,9 +35,11 @@ program
 		if (config.length === 0) {
 			// 没有传入配置文件
 		} else if (config.length === 1 && /\.json$/.test(config[0])) {
+			// 传入json配置文件
 			let cfg = require(path.resolve(config[0]))
 			map = {}
 			cfg.forEach(el => {
+				if (opt.admin && opt.admin !== el.admin) return
 				if (!map[el.admin]) map[el.admin] = []
 				el.admin && map[el.admin].push(el)
 			})
@@ -48,12 +52,12 @@ program
 				})
 				cmd.push({
 					// cmd: `${eslint} ${list.join(' ')} --ext ${opt.ext} -f /Users/saqqdy/www/saqqdy/eslint-reporter/src/js/reporter.js -o ${key}.html`,
-					cmd: `${eslint} ${list.join(' ')} ${opt.quiet ? '--quiet' : ''} --ext ${opt.ext} ${format} ${output}`,
+					cmd: `${eslint} ${list.join(' ')} ${opt.quiet ? '--quiet' : ''} ${opt.fix ? '--fix' : ''} --ext ${opt.ext} ${format} ${output}`,
 					config: {
 						slient: false,
 						again: false,
 						success: '导出成功',
-						fail: '出错了，可能是文件过多'
+						fail: '出错了，可能是文件过多导致的'
 					}
 				})
 			}
@@ -63,26 +67,27 @@ program
 			let output = ''
 			if (opt.output) output = '-o ' + opt.output
 			cmd.push({
-				cmd: `${eslint} ${config.join(' ')} ${opt.quiet ? '--quiet' : ''} --ext ${opt.ext} ${format} ${output}`,
+				cmd: `${eslint} ${config.join(' ')} ${opt.quiet ? '--quiet' : ''} ${opt.fix ? '--fix' : ''} --ext ${opt.ext} ${format} ${output}`,
 				config: {
 					slient: false,
 					again: false,
 					success: '导出成功',
-					fail: '出错了，可能是文件过多'
+					fail: '出错了，可能是文件过多导致的'
 				}
 			})
 		}
+		const spinner = ora(success('正在导出请稍后')).start()
 		queue(cmd).then(data => {
-			// console.log(data)
+			spinner.stop()
 		})
 	})
 
 // 自定义帮助
 program.on('--help', function () {
-	console.log('使用案例:')
-	console.log('  $ eslint-reporter init')
-	console.log('  $ eslint-reporter --help')
-	console.log('  $ eslint-reporter -h')
+	console.info('使用案例:')
+	console.info('  $ eslint-reporter init')
+	console.info('  $ eslint-reporter --help')
+	console.info('  $ eslint-reporter -h')
 })
 
 program.parse(process.argv)

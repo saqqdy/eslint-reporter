@@ -6,7 +6,7 @@ module.exports = {
 	},
 
 	rules: {
-		'no-console': 'warn',
+		'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
 		'no-debugger': 'off',
 		semi: [2, 'never'],
 		'vue/no-use-v-if-with-v-for': [0, 'always'],
@@ -29,6 +29,7 @@ module.exports = {
 	},
 
 	parserOptions: {
+		ecmaVersion: 6,
 		parser: 'babel-eslint'
 	}
 }
