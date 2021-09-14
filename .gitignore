@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-/dist
 yarn.lock
 /.pnp
 .pnp.js
@@ -10,18 +9,22 @@ selenium-debug.log
 
 # local env files
 .DS_Store
-.git
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+/lib
+/es
+/server
+*.bak
+*_bak
+*.bak.js
+
 # testing
 /coverage
 
 # production
-/build
-/src
 
 # Log files
 npm-debug.log*
@@ -36,3 +39,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+/stats.html

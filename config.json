@@ -1,0 +1,5 @@
+{
+    "extensions": [".js", ".jsx", ".ts", ".tsx", ".es6", ".es", ".mjs", ".ts", ".json"],
+    "externals": {},
+    "jsexclude": "/node_modules/"
+}

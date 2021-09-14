@@ -1,11 +1,8 @@
 lib
 dist
-docs
 server
 ui
 cache/*
 
 *.bak
 *_bak
-
-*.js

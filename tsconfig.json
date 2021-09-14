@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "es5",
+        "moduleResolution": "node",
+        "noLib": false,
+        "lib": ["ESNext"],
+        // "lib": ["es5", "es6", "dom", "dom.iterable", "esnext"],
+        // "lib": ["es2015", "es2016", "es2017", "dom"],
+        "sourceMap": true,
+        "module": "ESNext",
+        "jsx": "preserve",
+        "strict": true,
+        "declaration": true,
+        "noImplicitOverride": true,
+        "noUnusedLocals": true,
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "rootDirs": ["ui", "server"],
+        "paths": {
+            "@/*": ["ui/src/*"],
+            "@/package": ["./package.json"]
+        }
+    },
+    "include": ["bin/**/*.ts", "bin/**/*.d.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "typings/*.d.ts"],
+    "exclude": ["**/node_modules", "**/__tests__"]
+}

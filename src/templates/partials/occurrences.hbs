@@ -1,0 +1,48 @@
+<h2>Most-Common Errors and Warnings</h2>
+
+<div class="table-wrapper occurrences">
+  <div class="table-column">
+    <h3>Errors</h3>
+
+    {{#if errorOccurrences.length}}
+      <table class="summary-table">
+        <tbody>
+          {{#each errorOccurrences}}
+            <tr class="occurrence row-{{@index}}">
+              {{#if ruleUrl}}
+                <td><a href="{{ruleUrl}}">{{name}}</a></td>
+              {{^}}
+                <td>{{name}}</td>
+              {{/if}}
+              <td>{{count}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{^}}
+      <p>No errors were found!</p>
+    {{/if}}
+  </div>
+  <div class="table-column">
+    <h3>Warnings</h3>
+
+    {{#if warningOccurrences.length}}
+      <table class="summary-table">
+        <tbody>
+          {{#each warningOccurrences}}
+            <tr class="occurrence row-{{@index}}">
+              {{#if ruleUrl}}
+                <td><a href="{{ruleUrl}}">{{name}}</a></td>
+              {{^}}
+                <td>{{name}}</td>
+              {{/if}}
+              <td>{{count}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{^}}
+      <p>No warnings were found!</p>
+    {{/if}}
+  </div>
+</div>
